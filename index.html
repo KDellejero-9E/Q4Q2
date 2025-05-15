@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+      <h1>Score Analyzer</h1>
+    </header>
+
+    <p><strong>&#9660; Click Me</strong></p>
+    <p><em>Enter your grades in the following subjects.</em></p>
+
+  <div class="subject">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1r_7lj-adgx1XYkpXCZYcElqMzhLqtdBcMg&s" alt="Filipino">
+      <br>
+      <input type="number" id="grade1" placeholder="Filipino">
+  </div>
+
+  <div class="subject">
+      <img src="https://i.pinimg.com/564x/7b/d9/42/7bd9423a5515d9ccceb4932e08abddff.jpg" alt="Science">
+      <br>
+      <input type="number" id="grade2" placeholder="Science">
+  </div>
+
+  <div class="subject">
+    <img src="https://thumbs.dreamstime.com/b/blue-round-english-subject-concept-vector-linear-blue-round-concept-english-subject-school-lesson-children-education-102989283.jpg" alt="English">
+    <br>
+    <input type="number" id="grade3" placeholder="English">
+  </div>
+
+  <div>
+    <button class="btn-custom" onclick="analyzeGrades()">Get Rating</button>
+  </div>
+
+  <footer>
+    <p>Note: <em>Grading Criteria and Equivalents can vary depending on school or district.</em></p>
+    <p>Keisha Dellejero | 9E </p>
+  </footer>
+
+  <script>
+    function analyzeGrades() {
+      let g1 = Number(document.getElementById("grade1").value);
+      let g2 = Number(document.getElementById("grade2").value);
+      let g3 = Number(document.getElementById("grade3").value);
+
+      if (isNaN(g1) || isNaN(g2) || isNaN(g3)) {
+        alert("Please enter all three grades.");
+        return;
+      }
+
+      let avg = (g1 + g2 + g3) / 3;
+      avg = Math.round(avg * 100) / 100;
+
+      let rating = "";
+
+      if (avg >= 94 && avg <= 100) {
+        rating = "Excellent";
+      } else if (avg >= 87) {
+        rating = "Above Satisfactory";
+      } else if (avg >= 80) {
+        rating = "Satisfactory";
+      } else if (avg >= 75) {
+        rating = "Needs Improvement";
+      } else if (avg >= 70) {
+        rating = "Poor";
+      } else {
+        rating = "Invalid or Failing Grade";
+      }
+
+      alert(`Your average is ${avg.toFixed(2)} - ${rating}`);
+    }
+  </script>
+</body>
+</html>
